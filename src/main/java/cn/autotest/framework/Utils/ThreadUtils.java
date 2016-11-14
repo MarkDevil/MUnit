@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * Created by MingfengMa .
+ * Created by Mark .
  * Data : 2016/7/14
  * Desc :
  */
@@ -42,7 +42,7 @@ public class ThreadUtils {
 
     /**
      * 创建线程池服务
-     * @author  mingfengma
+     * @author  Mark
      * @return
      */
     public ExecutorService createThreadPool(){
@@ -51,7 +51,7 @@ public class ThreadUtils {
 
 
     /**
-     * @Author MingfengMa
+     * @Author Mark
      * @Date 2016/7/15
      * @param
      * @Description
@@ -86,7 +86,7 @@ public class ThreadUtils {
     }
 
     /**
-     * @author mingfengma
+     * @author Mark
      * 执行线程
      * @param claz      传入所需要的类
      * @param method    传入所需要的方法
@@ -134,7 +134,7 @@ public class ThreadUtils {
     }
 
     /**
-     * @Author MingfengMa
+     * @Author Mark
      * @Date 2016/9/21
      * @param
      * @Description  根据执行次数平均分组
@@ -157,7 +157,7 @@ public class ThreadUtils {
     }
 
     /**
-     * @Author MingfengMa
+     * @Author Mark
      * @Date 2016/9/21
      * @param
      * @Description  循环调用任务

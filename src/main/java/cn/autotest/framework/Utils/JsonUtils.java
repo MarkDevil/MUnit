@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.Objects;
 
 /**
- * Created by MingfengMa .
+ * Created by Mark .
  * Data : 2016/9/7
  * Desc :
  */
@@ -37,7 +37,7 @@ public class JsonUtils {
 
 
     /**
-     * @Author MingfengMa
+     * @Author Mark
      * @Date 2016/5/9
      * @param path
      * @Description  读取本地的json文件
@@ -85,7 +85,7 @@ public class JsonUtils {
 
     /**
      * @param
-     * @Author MingfengMa
+     * @Author Mark
      * @Date 2016/9/22
      * @Description 获取指定类所在的路径
      */
