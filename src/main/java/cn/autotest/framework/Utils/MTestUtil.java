@@ -28,7 +28,6 @@ public class MTestUtil {
 			ClientEngine engine = clientEngine.get(serviceId);
 			if (engine == null) {
 				String errMessage = String.format("Not found service config for [%s]", serviceId);
-
 				logger.error(errMessage);
 				throw new RuntimeException(errMessage);
 			}

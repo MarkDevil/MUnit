@@ -21,12 +21,10 @@ public class ReflectorHelper {
 				break;
 			}
 		}
-
 		return selectedMethod;
 	}
 
-
-	public static Map<String, Object> objectToMap(Object obj) {
+	public static Map objectToMap(Object obj) {
 		String jsonStr = JSON.toJSONString(obj);
 		return JSON.parseObject(jsonStr, Map.class);
 	}
@@ -59,13 +57,11 @@ public class ReflectorHelper {
 			for (Method method : methods) {
 				if (method.getName().equals(methodname)) {
 					params = method.getParameterTypes();
-					//logger.info("Parameters type :" + Arrays.toString(params));
 					types = new String[params.length];
 					for (int j = 0; j < params.length; j++) {
 						types[j] = params[j].getName();
 					}
 					break;
-
 				}
 			}
 			logger.info(String.format("parameters types: {%s}", Arrays.toString(types)));
