@@ -74,7 +74,7 @@ public class JsonUtils {
                 }
             }
             JSONObject jsonObject = JSON.parseObject(data.toString());
-            logger.info("Convert json data formater ：{} ",jsonObject.toString());
+            logger.info("Json Data ：{} ",jsonObject.toString());
             return jsonObject;
 
         }else {
@@ -95,7 +95,7 @@ public class JsonUtils {
 
     public static void main(String[] args) {
 //        E:\workspace\JUnitClassRunner\target\classes\loan
-        new JsonUtils().readJson(JsonUtils.class.getClass().getResource("/").getPath() + "loan");
+        new JsonUtils().readJson(JsonUtils.class.getClass().getResource("").getPath() + "loan");
 //        logger.info(JsonUtils.class.getClass().getResource("/").getPath() + "loan.json");
     }
 }
