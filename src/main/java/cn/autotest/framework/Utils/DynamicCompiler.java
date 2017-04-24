@@ -58,6 +58,7 @@ public class DynamicCompiler {
             e.printStackTrace();
         }
 
+        assert urls != null;
         URLClassLoader urlClassLoader = new URLClassLoader(urls);
         Class claz = null;
         try {
@@ -78,14 +79,8 @@ public class DynamicCompiler {
     public void invoke(Class<?> claz,String methodName,Class<?>... parameterTypes){
         try {
             java.lang.reflect.Method method = claz.getDeclaredMethod(methodName,parameterTypes);
-            method.invoke(claz.newInstance(),parameterTypes.getClass());
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+            method.invoke(claz.newInstance(),parameterTypes);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
             e.printStackTrace();
         }
     }
