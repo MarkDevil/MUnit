@@ -1,4 +1,4 @@
-package testrunner;
+package cn.autotest.framework.dto;
 
 /**
  * Created by Mark .
