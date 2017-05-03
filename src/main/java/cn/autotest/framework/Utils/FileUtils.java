@@ -22,6 +22,9 @@ public class FileUtils {
      * @return
      */
     public BufferedReader fileReader(String readerPath){
+        if (readerPath == null || readerPath.equals("")){
+            throw new RuntimeException("file path is incorrect");
+        }
         BufferedReader bufferedReader = null;
         try {
             bufferedReader = new BufferedReader(new FileReader(readerPath));
@@ -36,12 +39,12 @@ public class FileUtils {
      * @param bufferedReader
      * @param writePath
      */
-    public void fileWriter(BufferedReader bufferedReader,String writePath){
+    public void fileWriter(BufferedReader bufferedReader,String writePath,String filename){
         String line;
         BufferedWriter bufferedWriter = null;
         try {
             line = bufferedReader.readLine();
-            bufferedWriter = new BufferedWriter(new FileWriter(writePath));
+            bufferedWriter = new BufferedWriter(new FileWriter(writePath + filename));
             while (line!=null){
                 bufferedWriter.write(line + "\r\n");
                 line = bufferedReader.readLine();
