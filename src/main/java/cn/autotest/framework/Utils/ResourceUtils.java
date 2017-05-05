@@ -29,6 +29,14 @@ public class ResourceUtils {
     }
 
     /**
+     * 获取资源路径
+     * @return
+     */
+    public String getResourcePath(){
+        return this.getClass().getResource("/").getPath();
+    }
+
+    /**
      * 根据传入对象获取资源路径
      * @param filename
      * @param object

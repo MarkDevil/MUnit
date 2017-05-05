@@ -42,7 +42,7 @@ public class TestAssembleData {
 
     @Test
     public void testAssemble(){
-        AssembleData.generate(testMap);
+//        AssembleData.generate(testMap);
     }
 
     @Test

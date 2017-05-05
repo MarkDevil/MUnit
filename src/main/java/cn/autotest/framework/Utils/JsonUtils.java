@@ -17,7 +17,7 @@ public class JsonUtils {
     static Logger logger = LoggerFactory.getLogger(JsonUtils.class);
 
     /**
-     * json字符串转
+     * json字符串转对象
      * @param jsonStr
      * @param entityClass
      * @return
