@@ -52,7 +52,7 @@ public class ReflectorHelper {
 
 	public static String[] getMethodParamTypes(Class claz ,String methodname) throws ClassNotFoundException {
 		if (claz != null && methodname != null){
-			logger.info(String.format("The input parameter are {%s} ,{%s}",claz,methodname));
+			logger.info("The input parameter are {} ,{}",claz,methodname);
 			Class[] params;
 			String[] types = null;
 			Method[] methods = claz.getMethods();
@@ -66,7 +66,7 @@ public class ReflectorHelper {
 					break;
 				}
 			}
-			logger.info(String.format("parameters types: {%s}", Arrays.toString(types)));
+			logger.info("parameters types: {}", Arrays.toString(types));
 			return types;
 		}else{
 			try {
@@ -91,11 +91,11 @@ public class ReflectorHelper {
 			CtClass ctClass = classPool.get(clz.getCanonicalName());
 			CtMethod ctMethod = CtMethod.make("public Integer getInteger() " +
 					"{ " +
-					 "System.out.println(\"hello\");" +
+					 "System.out.println(\"hello invoke successfully\");" +
 					  "return null; " +
 					"}",ctClass);
 			ctClass.addMethod(ctMethod);
-			logger.info("获取添加后的方法:{}",ctClass.getDeclaredMethods());
+			logger.info("获取添加后的方法:{}", Arrays.toString(ctClass.getDeclaredMethods()));
 			Class clz1 = loader.loadClass(clz.getCanonicalName());
 			Object object = clz1.newInstance();
 			clz1.getMethod("getInteger",null).invoke(object,null);
