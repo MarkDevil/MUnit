@@ -1,11 +1,10 @@
 package testrunner;
 
-import cn.autotest.framework.Utils.AssembleData;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import cn.autotest.framework.dto.LoanMapper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +18,7 @@ import java.util.Map;
  * Desc   :
  */
 
-public class TestAssembleData {
+public class TestAssembleData{
 
     Logger logger = LoggerFactory.getLogger(TestAssembleData.class);
     Map<String, List<String>> testMap = new HashMap<>();
@@ -43,10 +42,17 @@ public class TestAssembleData {
     @Test
     public void testAssemble(){
 //        AssembleData.generate(testMap);
+        logger.info("动态编译成功");
     }
 
     @Test
-    public void testAssembleData(){
-        AssembleData.generate(LoanMapper.class,testMap,String.class);
+    public void testFailed(){
+        Assert.assertTrue(1 != 1);
     }
+
+
+//    @Test
+//    public void testAssembleData(){
+//        AssembleData.generate(LoanMapper.class,testMap,String.class);
+//    }
 }

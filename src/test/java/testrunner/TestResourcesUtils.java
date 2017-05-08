@@ -18,6 +18,7 @@ public class TestResourcesUtils {
 
     @Test
     public void testGetPath(){
-        resourceUtils.getResourceFilePath("loan");
+//        resourceUtils.getResourceFilePath("loan");
+        resourceUtils.getResourcePath(new TestResourcesUtils());
     }
 }

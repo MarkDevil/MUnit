@@ -14,26 +14,16 @@ public class ResourceUtils {
 
     Logger logger = LoggerFactory.getLogger(ResourceUtils.class);
 
-    /**
-     * 读取资源文件夹中的数据
-     * @param filename
-     * @return
-     */
-    public String getResourceFilePath(String filename){
-        if (filename == null || filename.equals("")){
-            throw new IllegalArgumentException("Input parameter is incorrect");
-        }
-        String retPath = this.getClass().getResource("/" + filename).getPath();
-        logger.info("File location : {}",retPath);
-        return retPath;
-    }
+
 
     /**
      * 获取资源路径
      * @return
      */
-    public String getResourcePath(){
-        return this.getClass().getResource("/").getPath();
+    public String getResourcePath(Object object){
+        String path = object.getClass().getResource("").getPath();
+        logger.info("Reources path : {}",path);
+        return path;
     }
 
     /**
@@ -46,7 +36,7 @@ public class ResourceUtils {
         if (filename == null || filename.equals("")){
             throw new IllegalArgumentException("Input parameter is incorrect");
         }
-        String retPath = object.getClass().getResource("/" + filename).getPath();
+        String retPath = object.getClass().getResource("" + filename).getPath();
         logger.info("File location : {}",retPath);
         return retPath;
     }
