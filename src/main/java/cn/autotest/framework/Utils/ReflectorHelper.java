@@ -1,9 +1,11 @@
 package cn.autotest.framework.Utils;
 
 import com.alibaba.fastjson.JSON;
+import javassist.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Map;
@@ -76,10 +78,38 @@ public class ReflectorHelper {
 		return null;
 	}
 
+	/**
+	 * 动态修改类中的字段值
+	 * @param field
+	 * @param value
+     */
+	public static void modifyValue(Class<?> clz,String field,String value){
+		ClassPool classPool = ClassPool.getDefault();
+		try {
+			//新建一个classLoader加载新编译生成的class文件
+			Loader loader = new Loader(classPool);
+			CtClass ctClass = classPool.get(clz.getCanonicalName());
+			CtMethod ctMethod = CtMethod.make("public Integer getInteger() " +
+					"{ " +
+					 "System.out.println(\"hello\");" +
+					  "return null; " +
+					"}",ctClass);
+			ctClass.addMethod(ctMethod);
+			logger.info("获取添加后的方法:{}",ctClass.getDeclaredMethods());
+			Class clz1 = loader.loadClass(clz.getCanonicalName());
+			Object object = clz1.newInstance();
+			clz1.getMethod("getInteger",null).invoke(object,null);
+		} catch (NotFoundException | CannotCompileException | InstantiationException | ClassNotFoundException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static void main(String[] args) {
 		try {
 			String[] paramtypes = getMethodParamTypes(ReflectorHelper.class,"getMethodParamTypes");
 			logger.info(Arrays.toString(paramtypes));
+			modifyValue(ResourceUtils.class,"1","1");
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}

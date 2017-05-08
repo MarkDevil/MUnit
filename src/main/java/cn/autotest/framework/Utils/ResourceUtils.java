@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 public class ResourceUtils {
 
     Logger logger = LoggerFactory.getLogger(ResourceUtils.class);
+    static ResourceUtils resourceUtils = new ResourceUtils();
 
 
 
@@ -39,5 +40,17 @@ public class ResourceUtils {
         String retPath = object.getClass().getResource("" + filename).getPath();
         logger.info("File location : {}",retPath);
         return retPath;
+    }
+
+    public String getFullClassName(Class<?> clasz){
+        String fullname = clasz.getCanonicalName();
+        logger.info(fullname);
+        return fullname;
+    }
+
+    public static void main(String[] args) {
+
+        resourceUtils.getFullClassName(ResourceUtils.class);
+        resourceUtils.getResourcePath(new ResourceUtils());
     }
 }
