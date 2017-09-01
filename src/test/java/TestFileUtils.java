@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -42,5 +43,11 @@ public class TestFileUtils {
         String path = excelUtils.createExcel("src/test/resources/","test","test",
                 new String[]{"客户名","电话","公司","来源"});
         logger.info("打印路径为 {}",path);
+    }
+
+    @Test
+    public void readExcelFile() throws FileNotFoundException {
+        ExcelUtils excelUtils = new ExcelUtils();
+        String path = excelUtils.readExcel("src/test/resources/20170605_01.xlsx","SQL Results");
     }
 }

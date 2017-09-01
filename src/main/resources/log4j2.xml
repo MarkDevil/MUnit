@@ -2,7 +2,7 @@
 <Configuration status="WARN">
 
     <properties>
-        <property name="logPath">log</property>
+        <property name="/logPath">log</property>
     </properties>
 
     <Appenders>
@@ -23,12 +23,19 @@
             <!--<DefaultRolloverStrategy max="20"/>-->
         <!--</RollingFile>-->
 
+
     </Appenders>
     <Loggers>
+        <!--异步打印日志-->
+        <!--<AsyncLogger name="cn.autotest.framework" level="info">-->
+            <!--<AppenderRef ref="Console" />-->
+        <!--</AsyncLogger>-->
         <Root level="info">
+
             <AppenderRef ref="Console" />
             <!-- <AppenderRef ref="LogFile" /> -->
             <!--<AppenderRef ref="RollingFile" />-->
         </Root>
+
     </Loggers>
 </Configuration>

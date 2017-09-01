@@ -4,12 +4,13 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.util.Iterator;
 import java.util.Objects;
 
 /**
@@ -70,6 +71,31 @@ public class ExcelUtils {
             }
         }
         return null;
+    }
+
+
+    public String readExcel(String fileDir,String sheet) throws FileNotFoundException {
+        FileInputStream inputStream;
+        XSSFWorkbook xssfWorkbook;
+        try {
+            inputStream = new FileInputStream(new File(fileDir));
+            xssfWorkbook = new XSSFWorkbook(inputStream);
+            int sheets = xssfWorkbook.getNumberOfSheets();
+            logger.info("sheet number : {} " , sheets);
+            XSSFSheet xssfSheet = xssfWorkbook.getSheet(sheet);
+            logger.info(String.valueOf(xssfSheet.getRow(0).getCell(2).getStringCellValue()));
+            Iterator<Row> it = xssfSheet.rowIterator();
+            while (it.hasNext()){
+                Row row = it.next();
+
+                logger.info("column name : {}" ,row.getCell(2).getStringCellValue());
+//                logger.info("row data : {}",row.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "ok";
     }
 
 
